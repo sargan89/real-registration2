@@ -18,7 +18,12 @@
 <div class="main m-5">
     <h1>Main Page</h1>
     <?php if (user_is_auth()): ?>
-        <p><a class="btn btn-info" href="logout.php">Logout</a></p>
+        <p class="logged-text">You are logged in as <strong><?php echo $_SESSION['auth']; ?></strong></p>
+        <form action="scripts/logout-controller.php" method="post">
+            <fieldset>
+                <button class="btn btn-info" type="submit">Logout</button>
+            </fieldset>
+        </form>
     <?php else: ?>
         <p><a class="btn btn-info" href="auth.php">Login</a></p>
         <p><a class="btn btn-primary" href="registration.php">Registration</a></p>
