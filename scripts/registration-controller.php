@@ -6,7 +6,7 @@ require_once __DIR__.'/../functions/alerts.php';
 require_once __DIR__ . '/../functions/database.php';
 require_once __DIR__ . '/../functions/users.php';
 
-// 1. Проверить корректность запроса
+// 1. Check request method
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     set_alert('alert alert-danger', 'Method not allowed!');
@@ -16,7 +16,7 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     exit;
 }
 
-// 2. Проверить данные
+// 2. Check data
 
 if (!$_POST['email'] || !$_POST['password']) {
     set_alert('alert alert-danger', 'E-mail and password are required!');
@@ -37,7 +37,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// 3. Добавить пользователя
+// 3. Create new user
 
 $database = database_connect();
 

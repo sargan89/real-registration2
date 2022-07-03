@@ -4,7 +4,7 @@ session_start();
 
 require_once __DIR__.'/../functions/alerts.php';
 
-// 1. Проверить корректность запроса
+// 1. Check request method
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     set_alert('alert alert-danger', 'Method not allowed!');
@@ -14,9 +14,9 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     exit;
 }
 
-// 2. Выход пользователя
+// 2. User logout
 
-unset($_SESSION['auth']);
+setcookie('auth', null, -1, '/');
 
 set_alert('alert alert-success', 'You are logged out on the site.');
 

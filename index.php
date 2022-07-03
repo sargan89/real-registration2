@@ -18,7 +18,7 @@
 <div class="main m-5">
     <h1>Main Page</h1>
     <?php if (user_is_auth()): ?>
-        <p class="logged-text">You are logged in as <strong><?php echo $_SESSION['auth']; ?></strong></p>
+        <p class="logged-text">You are logged in as <strong><?php echo $_COOKIE['auth']; ?></strong></p>
         <form action="scripts/logout-controller.php" method="post">
             <fieldset>
                 <button class="btn btn-info" type="submit">Logout</button>

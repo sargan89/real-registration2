@@ -42,5 +42,5 @@ function user_auth(PDO $database, string $login, string $password): bool
 
 function user_is_auth(): bool
 {
-    return (bool)!empty($_SESSION['auth']);
+    return (bool)!empty($_COOKIE['auth']);
 }

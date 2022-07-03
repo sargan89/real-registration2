@@ -6,7 +6,7 @@ require_once __DIR__.'/../functions/alerts.php';
 require_once __DIR__ . '/../functions/database.php';
 require_once __DIR__ . '/../functions/users.php';
 
-// 1. Проверить корректность запроса
+// 1. Check request method
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     set_alert('alert alert-danger', 'Method not allowed!');
@@ -16,7 +16,7 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     exit;
 }
 
-// 2. Проверить данные
+// 2. Check data
 
 if (!$_POST['email'] || !$_POST['password']) {
     set_alert('alert alert-danger', 'E-mail and password are required!');
@@ -37,7 +37,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// 3. Проверить наличие пользователя
+// 3. Check if user exists
 
 $database = database_connect();
 
@@ -49,9 +49,9 @@ if (!$isLogin) {
     exit;
 }
 
-// 4. Сохраняем данные аутентификации
+// 4. Save auth data
 
-$_SESSION['auth'] = $email;
+setcookie("auth", $email, time() + (86400 * 30), "/"); //set a cookie for a month
 
 set_alert('alert alert-success', 'Welcome!');
 
